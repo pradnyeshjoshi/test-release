@@ -39,4 +39,4 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./artifact.txt
           asset_name: artifact.txt
-          # asset_content_type: application/gzip
+          asset_content_type: application/txt
