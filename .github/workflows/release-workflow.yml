@@ -19,6 +19,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v2.21.1
         with:
           workflow: release-workflow.yml
+          branch: main
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
