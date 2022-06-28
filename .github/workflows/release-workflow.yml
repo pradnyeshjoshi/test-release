@@ -15,11 +15,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@v2.21.1
-        with:
-          workflow: release-workflow.yml
-          branch: main
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -40,6 +35,6 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./artifact.txt
+          asset_path: artifacts/artifact.txt
           asset_name: artifact.txt
           asset_content_type: application/txt

@@ -5,14 +5,7 @@ name: Run reusable workflow
 
 jobs:
   build:
-    name: Run reusable workflow
     runs-on: ubuntu-latest
     steps:
       - name: Run reusable workflow (Step 1)
         run: echo "Run reusable workflow (Step 1)"
-      - name: Create artifact
-        run: echo "This is an artifact." > artifact.txt  
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          path: artifact.txt
