@@ -7,7 +7,10 @@ on:
 name: Create Release
 
 jobs:
+  reusable-workflow:
+    uses: ./.github/workflows/reusable-workflow.yml
   build:
+    needs: reusable-workflow
     name: Create Release
     runs-on: ubuntu-latest
     steps:
