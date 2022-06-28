@@ -8,6 +8,7 @@ name: Create Release
 
 jobs:
   reusable-workflow:
+    runs-on: ubuntu-latest
     uses: .github/workflows/reusable-workflow.yml
   create-release:
     runs-on: ubuntu-latest
