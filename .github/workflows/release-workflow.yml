@@ -15,8 +15,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Download artifacts from reusable workflow
-        uses: actions/download-artifact@v3
+      - name: Download workflow artifact
+        uses: dawidd6/action-download-artifact@v2.21.1
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
