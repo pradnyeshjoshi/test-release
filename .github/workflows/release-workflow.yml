@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Download artifacts from reusable workflow
+        uses: actions/download-artifact@v3
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -23,9 +25,18 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          # body: |
-          #   Changes in this Release
-          #   - First Change
-          #   - Second Change
+          body: |
+            Changes in this Release
+            - First Change
+            - Second Change
           draft: true
           prerelease: false
+      - name: Upload release artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifact.txt
+          # asset_name: azblogfilter.linux-amd64.tar.gz
+          # asset_content_type: application/gzip
