@@ -1,0 +1,12 @@
+on:
+  workflow_call:
+
+name: Run reusable workflow
+
+jobs:
+  build:
+    name: Run reusable workflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run reusable workflow (Step 1)
+        run: echo "Run reusable workflow (Step 1)"
