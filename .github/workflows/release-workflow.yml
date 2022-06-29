@@ -29,12 +29,20 @@ jobs:
             - Second Change
           draft: true
           prerelease: false
-      - name: Upload release artifact
-        uses: actions/upload-release-asset@v1
+      # - name: Upload release artifact
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ github.token }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }}
+      #     asset_path: artifacts/artifact.txt
+      #     asset_name: artifact.txt
+      #     asset_content_type: application/txt
+      - name: Upload Release Assets
+        id: upload-release-assets
+        uses: dwenegar/upload-release-assets@v1
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: artifacts/artifact.txt
-          asset_name: artifact.txt
-          asset_content_type: application/txt
+          release_id: ${{ steps.create_release.outputs.id }}
+          assets_path: artifacts
